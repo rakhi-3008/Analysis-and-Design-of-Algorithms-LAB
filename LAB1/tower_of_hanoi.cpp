@@ -1,29 +1,26 @@
 #include <iostream>
 using namespace std;
 
-void moveOneDisk(int n, char source, char destination) {
+// Recursive function to solve Tower of Hanoi
+void towerOfHanoi(int n, char source, char auxiliary, char destination) {
     if (n == 1) {
-        cout << "Move disk " << n << " from " << source << " to " << destination << endl;
+        cout << "Move disk 1 from " << source << " to " << destination << endl;
+        return;
     }
-}
 
-void towerOfHanoi(int n, char source, char destination, char auxiliary) {
-    if (n == 0) return;
+    // Move (n-1) disks from source to auxiliary
+    towerOfHanoi(n - 1, source, destination, auxiliary);
 
-    // 1st recursive call: move n-1 disks
-    towerOfHanoi(n-1, source, auxiliary, destination);
+    // Move nth disk from source to destination
+    cout << "Move disk " << n << " from " << source << " to " << destination << endl;
 
-    // 2nd recursive call: move the nth disk (as recursion with base case)
-    moveOneDisk(n, source, destination);
-
-    // 3rd recursive call: move n-1 disks
-    towerOfHanoi(n-1, auxiliary, destination, source);
+    // Move (n-1) disks from auxiliary to destination
+    towerOfHanoi(n - 1, auxiliary, source, destination);
 }
 
 int main() {
-    int n;
-    cout << "Enter number of disks: ";
-    cin >> n;
-    towerOfHanoi(n, 'A', 'C', 'B');
+    int n = 3;  // Number of disks
+    cout << "Steps to solve Tower of Hanoi for " << n << " disks:\n";
+    towerOfHanoi(n, 'A', 'B', 'C');
     return 0;
 }
