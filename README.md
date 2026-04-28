@@ -320,6 +320,55 @@ void insertionSort(int a[], int n){
 
 ---
 
+## 4. Merge Sort
 
+### Aim
+
+To sort array elements using Merge Sort with divide-and-conquer.
+
+### Algorithm
+
+```cpp
+void mergeSort(int a[], int low, int high){
+    if(low < high){
+        int mid = (low + high) / 2;
+
+        mergeSort(a, low, mid);
+        mergeSort(a, mid + 1, high);
+        merge(a, low, mid, high);
+    }
+}
+```
+### Time Complexity
+* Best Case: **O(n log n)**
+* Worst Case: **O(n log n)**
+### Space Complexity
+* O(n)
+ ---
+
+ ## 5. Quick Sort
+
+### Aim
+
+To sort array elements using Quick Sort with partition technique.
+
+### Algorithm
+
+```cpp
+void quickSort(int a[], int low, int high){
+    if(low < high){
+        int p = partition(a, low, high);
+
+        quickSort(a, low, p - 1);
+        quickSort(a, p + 1, high);
+    }
+}
+```
+### Time Complexity
+* Best Case: **O(n log n)**
+* Worst Case: **O(n^2)**
+### Space Complexity
+* O(1)
+ ---
 
 ✨ *All programs are implemented in C++ and focus on understanding algorithmic efficiency.*
