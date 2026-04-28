@@ -261,5 +261,65 @@ int linearSearch(int arr[], int n, int target){
 
 
 ---
+## 10. Binary Search
+
+### Aim
+
+To efficiently search an element in a sorted array using divide-and-conquer.
+
+### Algorithm
+
+```cpp
+int binarySearch(int a[], int low, int high, int key){
+    while(low <= high){
+        int mid = (low + high) / 2;
+
+        if(a[mid] == key)
+            return mid;
+        else if(a[mid] < key)
+            low = mid + 1;
+        else
+            high = mid - 1;
+    }
+    return -1;
+}
+```
+### Time Complexity
+
+* Best Case: **O(1)**
+* Worst Case: **O(nlogn)**
+
+---
+## 3. Insertion Sort
+
+### Aim
+
+To sort array elements using Insertion Sort.
+
+### Algorithm
+
+```cpp
+void insertionSort(int a[], int n){
+    for(int i = 1; i < n; i++){
+        int key = a[i];
+        int j = i - 1;
+
+        while(j >= 0 && a[j] > key){
+            a[j + 1] = a[j];
+            j--;
+        }
+
+        a[j + 1] = key;
+    }
+}
+```
+### Time Complexity
+
+* Best Case: **O(n)**
+* Worst Case: **O(n^2)**
+
+---
+
+
 
 ✨ *All programs are implemented in C++ and focus on understanding algorithmic efficiency.*
