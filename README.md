@@ -424,6 +424,111 @@ for(i=0;i<n;i++){
 ```
 ### Time Complexity **O(n log n)**
 ### Space Complexity **O(1)**
+---
+
+## 11. Activity Selection
+
+### Aim
+
+To select maximum number of non-overlapping activities.
+
+### Algorithm
+
+```cpp
+sort(activities by finish time);
+
+select first activity;
+last = 0;
+
+for(i=1;i<n;i++){
+    if(start[i] >= finish[last]){
+        select activity i;
+        last = i;
+    }
+}
+```
+### Time Complexity **O(n log n)**
+### Space Complexity **O(1)**
+---
+
+## 12. Dijkstra Algorithm
+
+### Aim
+
+To find shortest path from source vertex to all vertices.
+
+### Algorithm
+
+```cpp
+dist[source] = 0;
+
+for(count=0; count<V-1; count++){
+    u = minimumDistanceVertex();
+    visited[u] = true;
+
+    for(v=0; v<V; v++){
+        if(!visited[v] && graph[u][v] &&
+           dist[u] + graph[u][v] < dist[v])
+            dist[v] = dist[u] + graph[u][v];
+    }
+}
+
+```
+### Time Complexity **O(V^2)**
+### Space Complexity **O(V)**
+
+---
+
+## 13. Kruskal Algorithm
+
+### Aim
+
+To find Minimum Spanning Tree using greedy method.
+
+### Algorithm
+
+```cpp
+sort(edges by weight);
+
+for each edge(u,v):
+    if(find(u) != find(v)){
+        include edge;
+        union(u,v);
+    }
+
+```
+### Time Complexity **O(ElogE)**
+### Space Complexity **O(V)**
+
+---
+## 14. Prim's Algorithm
+
+### Aim
+
+To find Minimum Spanning Tree starting from any vertex.
+
+### Algorithm
+
+```cpp
+key[0] = 0;
+
+for(count=0; count<V-1; count++){
+    u = minimumKeyVertex();
+    mst[u] = true;
+
+    for(v=0; v<V; v++){
+        if(graph[u][v] && !mst[v] &&
+           graph[u][v] < key[v]){
+            parent[v] = u;
+            key[v] = graph[u][v];
+        }
+    }
+}
+```
+### Time Complexity **O(V^2)**
+### Space Complexity **O(V)**
+
+---
 
 
 ✨ *All programs are implemented in C++ and focus on understanding algorithmic efficiency.*
