@@ -529,6 +529,33 @@ for(count=0; count<V-1; count++){
 ### Space Complexity **O(V)**
 
 ---
+## 15. Multi Stage Graph using Dynamic Programming
+
+### Aim
+
+To find the shortest path from source to destination in a multi-stage graph using Dynamic Programming.
+
+### Algorithm
+
+```cpp
+cost[n] = 0;
+
+for(i=n-1; i>=1; i--){
+    cost[i] = INF;
+
+    for(each vertex j connected from i){
+        if(graph[i][j] + cost[j] < cost[i]){
+            cost[i] = graph[i][j] + cost[j];
+            path[i] = j;
+        }
+    }
+}
+
+```
+### Time Complexity **O(V^2)**
+### Space Complexity **O(V)**
+---
+
 
 
 ✨ *All programs are implemented in C++ and focus on understanding algorithmic efficiency.*
