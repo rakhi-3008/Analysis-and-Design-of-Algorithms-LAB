@@ -371,4 +371,34 @@ void quickSort(int a[], int low, int high){
 * O(1)
  ---
 
+ ## 6. Kth Smallest Element 
+
+### Aim
+
+To find the kth smallest element in an array using partition method of Quick Sort.
+
+### Algorithm
+
+```cpp
+int kthSmallestNumber(int arr[], int s, int e, int k){
+    int p = partition(arr, s, e);
+
+    if(p == k)
+        return arr[p];
+    else if(k < p)
+        return kthSmallestNumber(arr, s, p - 1, k);
+    else
+        return kthSmallestNumber(arr, p + 1, e, k);
+}
+```
+### Time Complexity
+* Best Case: **O(n)**
+* Average Case: **O(n)**
+* Worst Case: **O(n²)**
+### Space Complexity
+* Average Case: **O(log n)**
+* Worst Case: **O(n)**
+---
+
+
 ✨ *All programs are implemented in C++ and focus on understanding algorithmic efficiency.*
