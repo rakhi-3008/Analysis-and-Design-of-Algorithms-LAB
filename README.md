@@ -400,5 +400,30 @@ int kthSmallestNumber(int arr[], int s, int e, int k){
 * Worst Case: **O(n)**
 ---
 
+## 10. Fractional Knapsack
+
+### Aim
+
+To maximize profit by selecting full or fractional items based on profit/weight ratio.
+
+### Algorithm
+
+```cpp
+sort(items by profit/weight ratio descending);
+
+for(i=0;i<n;i++){
+    if(capacity >= wt[i]){
+        profit += val[i];
+        capacity -= wt[i];
+    }
+    else{
+        profit += val[i] * ((float)capacity / wt[i]);
+        break;
+    }
+}
+```
+### Time Complexity **O(n log n)**
+### Space Complexity **O(1)**
+
 
 ✨ *All programs are implemented in C++ and focus on understanding algorithmic efficiency.*
