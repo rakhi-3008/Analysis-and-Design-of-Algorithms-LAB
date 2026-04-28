@@ -556,6 +556,37 @@ for(i=n-1; i>=1; i--){
 ### Space Complexity **O(V)**
 ---
 
+## 16. Matrix Chain Multiplication using Dynamic Programming
+
+### Aim
+
+To find the minimum number of scalar multiplications required for matrix chain multiplication.
+
+### Algorithm
+
+```cpp
+for(i=1;i<=n;i++)
+    dp[i][i]=0;
+
+for(len=2; len<=n; len++){
+    for(i=1; i<=n-len+1; i++){
+        j = i + len - 1;
+        dp[i][j] = INF;
+
+        for(k=i; k<j; k++){
+            cost = dp[i][k] + dp[k+1][j] + p[i-1]*p[k]*p[j];
+
+            if(cost < dp[i][j])
+                dp[i][j] = cost;
+        }
+    }
+}
+
+```
+
+### Time Complexity **O(n^3)**
+### Space Complexity **O(n^2)**
+---
 
 
 ✨ *All programs are implemented in C++ and focus on understanding algorithmic efficiency.*
