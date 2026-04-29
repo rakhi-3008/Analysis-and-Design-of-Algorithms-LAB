@@ -3,7 +3,7 @@
 This repository contains implementations of important algorithms studied in ADA, along with their **Aim**, **Algorithm**, **Time Complexity**.
 ---
 
-## 1. Power of x^n using Binary Exponentiation (Recursive)
+## 1. x raised to power n
 
 ### Aim
 
@@ -587,6 +587,99 @@ for(len=2; len<=n; len++){
 ### Time Complexity **O(n^3)**
 ### Space Complexity **O(n^2)**
 ---
+
+## 17. Longest Common Subsequence (LCS) using Dynamic Programming
+
+### Aim
+
+To find the length of the Longest Common Subsequence between two strings using Dynamic Programming.
+
+### Algorithm
+
+```cpp
+for(i=0;i<=m;i++)
+    dp[i][0]=0;
+
+for(j=0;j<=n;j++)
+    dp[0][j]=0;
+
+for(i=1;i<=m;i++){
+    for(j=1;j<=n;j++){
+        if(s1[i-1] == s2[j-1])
+            dp[i][j] = dp[i-1][j-1] + 1;
+        else
+            dp[i][j] = max(dp[i-1][j], dp[i][j-1]);
+    }
+}
+```
+### Time Complexity
+* **O(m × n)**
+### Space Complexity
+* **O(m × n)**
+---
+
+## 18. All Pairs Shortest Path using Floyd Warshall Algorithm
+
+### Aim
+
+To find the shortest paths between all pairs of vertices using Dynamic Programming.
+
+### Algorithm
+
+```cpp
+for(k=0;k<n;k++){
+    for(i=0;i<n;i++){
+        for(j=0;j<n;j++){
+            if(dist[i][k] != INF && dist[k][j] != INF &&
+               dist[i][j] > dist[i][k] + dist[k][j])
+
+                dist[i][j] = dist[i][k] + dist[k][j];
+        }
+    }
+}
+```
+### Time Complexity
+* **O(n^3)**
+### Space Complexity
+* **O(n^2)**
+  
+---
+
+## 19. Travelling Salesperson Problem (TSP) using Dynamic Programming
+
+### Aim
+
+To find the minimum travelling cost for visiting all cities exactly once and returning to the starting city using Dynamic Programming.
+
+### Algorithm
+
+```cpp
+int tsp(mask, pos){
+
+    if(mask == (1<<n)-1)
+        return dist[pos][0];
+
+    if(dp[mask][pos] != -1)
+        return dp[mask][pos];
+
+    ans = INF;
+
+    for(city=0; city<n; city++){
+        if((mask & (1<<city)) == 0)
+            ans = min(ans,
+                  dist[pos][city] +
+                  tsp(mask | (1<<city), city));
+    }
+
+    return dp[mask][pos] = ans;
+}
+```
+### Time Complexity
+* **O(n² × 2ⁿ)**
+### Space Complexity
+* **O(n × 2ⁿ)**
+---
+
 
 
 ✨ *All programs are implemented in C++ and focus on understanding algorithmic efficiency.*
