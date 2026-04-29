@@ -602,4 +602,80 @@ int tsp(mask, pos){
 * **O(n × 2ⁿ)**
 ---
 
+## 26. Graph Coloring Problem
+### Aim
+To color all vertices of a graph using at most m colors such that no two adjacent vertices have the same color.
+### Algorithm
+```cpp
+void mColoring(int k){
+    while(true){
+        nextValue(k);
+
+        if(x[k] == 0)
+            return;
+
+        if(k == n)
+            print solution;
+        else
+            mColoring(k + 1);
+    }
+}
+```
+### Time Complexity
+* worst case **O(m^n)**
+### Space Complexity
+* **O(n)**
+---
+
+## 27. N-Queens Problem using Backtracking
+### Aim
+To place n queens on an n × n chessboard such that no two queens attack each other.
+### Algorithm
+```cpp
+void nQueens(int k){
+    for(int i=1; i<=n; i++){
+        if(place(k, i)){
+            x[k] = i;
+
+            if(k == n)
+                print solution;
+            else
+                nQueens(k + 1);
+        }
+    }
+}
+```
+### Time Complexity
+* worst case **O(n!)**
+### Space Complexity
+* **O(n)**
+---
+
+## 28. Sum of Subsets using Backtracking
+### Aim
+To find all subsets of a set whose sum is equal to a given value.
+### Algorithm
+```cpp
+void sumOfSubsets(int s, int idx){
+    if(s == k){
+        printSubset();
+        return;
+    }
+
+    if(idx > n || s > k)
+        return;
+
+    x[idx] = 1;
+    sumOfSubsets(s + w[idx], idx + 1);
+
+    x[idx] = 0;
+    sumOfSubsets(s, idx + 1);
+}
+```
+### Time Complexity
+* worst case **O(2^n)**
+### Space Complexity
+* **O(n)**
+---
+
 ✨ *All programs are implemented in C++ and focus on understanding algorithmic efficiency.*
