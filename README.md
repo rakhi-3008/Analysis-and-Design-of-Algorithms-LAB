@@ -2,52 +2,54 @@
 
 This repository contains implementations of important algorithms studied in ADA, along with their **Aim**, **Algorithm**, **Time Complexity**.
 ---
-
-## 1. x raised to power n
+## 1. Bubble Sort (Time Analysis)
 ### Aim
-To efficiently compute the value of (x^n) using divide-and-conquer.
+To sort an array using Bubble Sort and measure average execution time.
 ### Algorithm
 ```cpp
-int power(int x, int n){
-    if(n == 0)
-        return 1;
-
-    int half = power(x, n / 2);
-
-    if(n % 2 == 0)
-        return half * half;
-    else
-        return x * half * half;
+void bubbleSort(int arr[], int n){
+    for(int i = 0; i < n - 1; i++){
+        for(int j = 0; j < n - i - 1; j++){
+            if(arr[j] > arr[j + 1]){
+                swap(arr[j], arr[j + 1]);
+            }
+        }
+    }
 }
 ```
+### Graph
+<p align="center">
+  <img src="Graphs/bubbleSort.png" height="300" width="500">
+</p>
+
 ### Time Complexity
-* Time: **O(log n)**
-* Space: **O(log n)** (recursion stack)
+* Time: **O(n²)**
+* Space: **O(1)**
 ---
 
-## 2. Permutations of a String
+## 2. Linear Search (Time Analysis)
 ### Aim
-To generate all possible permutations of a given string using recursion.
+To search for an element in an array using linear search and analyze execution time.
 ### Algorithm
 ```cpp
-void permutations(char arr[], int n, int k){
-    if(k == n){
-        for(int i = 0; i < n; i++)
-            cout << arr[i];
-        cout << endl;
-        return;
+int linearSearch(int arr[], int n, int target){
+    for(int i = 0; i < n; i++){
+        if(arr[i] == target)
+            return i;
     }
-
-    for(int i = k; i < n; i++){
-        swap(arr[i], arr[k]);
-        permutations(arr, n, k + 1);
-        swap(arr[i], arr[k]); // backtracking
-    }
+    return -1;
 }
 ```
+### Graph
+<p align="center">
+  <img src="Graphs/linearSearch.png" height="300" width="500">
+</p>
+
 ### Time Complexity
-* Time: **O(n × n!)**
-* Space: **O(n)**
+* Best Case: **O(1)**
+* Average Case: **O(n)**
+* Worst Case: **O(n)**
+* Space: **O(1)**
 ---
 
 ## 3. Horner’s Rule (Recursive)
@@ -86,24 +88,26 @@ void towerOfHanoi(int n, char source, char destination, char auxiliary){
 * Space: **O(n)**
 ---
 
-## 5. Bubble Sort (Time Analysis)
+## 5. x raised to power n
 ### Aim
-To sort an array using Bubble Sort and measure average execution time.
+To efficiently compute the value of (x^n) using divide-and-conquer.
 ### Algorithm
 ```cpp
-void bubbleSort(int arr[], int n){
-    for(int i = 0; i < n - 1; i++){
-        for(int j = 0; j < n - i - 1; j++){
-            if(arr[j] > arr[j + 1]){
-                swap(arr[j], arr[j + 1]);
-            }
-        }
-    }
+int power(int x, int n){
+    if(n == 0)
+        return 1;
+
+    int half = power(x, n / 2);
+
+    if(n % 2 == 0)
+        return half * half;
+    else
+        return x * half * half;
 }
 ```
 ### Time Complexity
-* Time: **O(n²)**
-* Space: **O(1)**
+* Time: **O(log n)**
+* Space: **O(log n)** (recursion stack)
 ---
 
 ## 6. Missing Number using XOR
@@ -170,24 +174,29 @@ void truthTable(char arr[], int n, int k){
 * Space: **O(n)**
 ---
 
-## 9. Linear Search (Time Analysis)
+## 9. Permutations of a String
 ### Aim
-To search for an element in an array using linear search and analyze execution time.
+To generate all possible permutations of a given string using recursion.
 ### Algorithm
 ```cpp
-int linearSearch(int arr[], int n, int target){
-    for(int i = 0; i < n; i++){
-        if(arr[i] == target)
-            return i;
+void permutations(char arr[], int n, int k){
+    if(k == n){
+        for(int i = 0; i < n; i++)
+            cout << arr[i];
+        cout << endl;
+        return;
     }
-    return -1;
+
+    for(int i = k; i < n; i++){
+        swap(arr[i], arr[k]);
+        permutations(arr, n, k + 1);
+        swap(arr[i], arr[k]); // backtracking
+    }
 }
 ```
 ### Time Complexity
-* Best Case: **O(1)**
-* Average Case: **O(n)**
-* Worst Case: **O(n)**
-* Space: **O(1)**
+* Time: **O(n × n!)**
+* Space: **O(n)**
 ---
 
 ## 10. Selection Sort
@@ -208,6 +217,11 @@ void selectionSort(int a[], int n){
     }
 }
 ```
+### Graph
+<p align="center">
+  <img src="Graphs/selectionSort.png" height="300" width="500">
+</p>
+
 ### Time Complexity
 * Best Case: **O(1)**
 * Average Case: **O(n)**
@@ -234,6 +248,11 @@ int binarySearch(int a[], int low, int high, int key){
     return -1;
 }
 ```
+### Graph
+<p align="center">
+  <img src="Graphs/binarySearch.png" height="300" width="500">
+</p>
+
 ### Time Complexity
 * Best Case: **O(1)**
 * Worst Case: **O(nlogn)**
@@ -258,6 +277,11 @@ void insertionSort(int a[], int n){
     }
 }
 ```
+### Graph
+<p align="center">
+  <img src="Graphs/insertionSort.png" height="300" width="500">
+</p>
+
 ### Time Complexity
 * Best Case: **O(n)**
 * Worst Case: **O(n^2)**
@@ -278,6 +302,11 @@ void mergeSort(int a[], int low, int high){
     }
 }
 ```
+### Graph
+<p align="center">
+  <img src="Graphs/mergeSort.png" height="300" width="500">
+</p>
+
 ### Time Complexity
 * Best Case: **O(n log n)**
 * Worst Case: **O(n log n)**
@@ -349,6 +378,11 @@ for(i=0;i<n;i++){
     }
 }
 ```
+### Graph
+<p align="center">
+  <img src="Graphs/knapsack.png" height="300" width="500">
+</p>
+
 ### Time Complexity **O(n log n)**
 ### Space Complexity **O(1)**
 ---
