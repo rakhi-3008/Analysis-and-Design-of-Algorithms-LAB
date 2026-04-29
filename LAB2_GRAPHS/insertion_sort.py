@@ -7,11 +7,11 @@ time_ns = [0.875, 0, 3.599, 90.57, 3173.39]  # 0 ko 1 se replace (log issue avoi
 
 # Theoretical complexities
 n_linear = n
-n_square = [x*x*0.000000000000000000000000000000000000000002 for x in n]
+n_square = [x*x for x in n]
 log_n = [math.log2(x) for x in n]
 
 # Plot
-plt.loglog(n, time_ns, marker='o', label="Actual Time (Linear Search)")
+plt.loglog(n, time_ns, marker='o', label="Actual Time")
 plt.loglog(n, n_linear, linestyle='--', label="O(n)")
 plt.loglog(n, n_square, linestyle='--', label="O(n²)")
 plt.loglog(n, log_n, linestyle='--', label="O(log n)")
@@ -21,7 +21,7 @@ plt.text(2000, 5000000000,
          fontsize=9)
 plt.xlabel("Input size (n)")
 plt.ylabel("Average time (log scale)")
-plt.title("Time Complexity Comparison")
+plt.title("Time Complexity Comparison for Insertion Sort")
 
 plt.legend()
 plt.grid(True, which="both")
