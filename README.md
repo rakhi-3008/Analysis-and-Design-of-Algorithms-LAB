@@ -4,13 +4,9 @@ This repository contains implementations of important algorithms studied in ADA,
 ---
 
 ## 1. x raised to power n
-
 ### Aim
-
 To efficiently compute the value of (x^n) using divide-and-conquer.
-
 ### Algorithm
-
 ```cpp
 int power(int x, int n){
     if(n == 0)
@@ -24,23 +20,15 @@ int power(int x, int n){
         return x * half * half;
 }
 ```
-
 ### Time Complexity
-
 * Time: **O(log n)**
 * Space: **O(log n)** (recursion stack)
-
-
 ---
 
 ## 2. Permutations of a String
-
 ### Aim
-
 To generate all possible permutations of a given string using recursion.
-
 ### Algorithm
-
 ```cpp
 void permutations(char arr[], int n, int k){
     if(k == n){
@@ -57,23 +45,15 @@ void permutations(char arr[], int n, int k){
     }
 }
 ```
-
 ### Time Complexity
-
 * Time: **O(n × n!)**
 * Space: **O(n)**
-
-
 ---
 
 ## 3. Horner’s Rule (Recursive)
-
 ### Aim
-
 To evaluate a polynomial efficiently using Horner’s Rule.
-
 ### Algorithm
-
 ```cpp
 double hornerRecursive(double A[], int n, double a, int index = 0){
     if(index == n)
@@ -82,23 +62,15 @@ double hornerRecursive(double A[], int n, double a, int index = 0){
     return A[index] + a * hornerRecursive(A, n, a, index + 1);
 }
 ```
-
 ### Time Complexity
-
 * Time: **O(n)**
 * Space: **O(n)** (recursive)
-
-
 ---
 
 ## 4. Tower of Hanoi
-
 ### Aim
-
 To solve the Tower of Hanoi problem using recursion.
-
 ### Algorithm
-
 ```cpp
 void towerOfHanoi(int n, char source, char destination, char auxiliary){
     if(n == 0)
@@ -109,23 +81,15 @@ void towerOfHanoi(int n, char source, char destination, char auxiliary){
     towerOfHanoi(n - 1, auxiliary, destination, source);
 }
 ```
-
 ### Time Complexity
-
 * Time: **O(2^n)**
 * Space: **O(n)**
-
-
 ---
 
 ## 5. Bubble Sort (Time Analysis)
-
 ### Aim
-
 To sort an array using Bubble Sort and measure average execution time.
-
 ### Algorithm
-
 ```cpp
 void bubbleSort(int arr[], int n){
     for(int i = 0; i < n - 1; i++){
@@ -137,23 +101,15 @@ void bubbleSort(int arr[], int n){
     }
 }
 ```
-
 ### Time Complexity
-
 * Time: **O(n²)**
 * Space: **O(1)**
-
-
 ---
 
 ## 6. Missing Number using XOR
-
 ### Aim
-
 To find a missing number from consecutive integers using bitwise XOR.
-
 ### Algorithm
-
 ```cpp
 int findMissing(int arr[], int n){
     int xor1 = 0, xor2 = 0;
@@ -167,23 +123,15 @@ int findMissing(int arr[], int n){
     return xor1 ^ xor2;
 }
 ```
-
 ### Time Complexity
-
 * Time: **O(n)**
 * Space: **O(1)**
-
-
 ---
 
 ## 7. Ball Tip Count (Recursive)
-
 ### Aim
-
 To count the number of tips until velocity becomes less than or equal to 1.
-
 ### Algorithm
-
 ```cpp
 int tip(double v){
     if(v <= 1)
@@ -192,23 +140,15 @@ int tip(double v){
     return 1 + tip(v * 0.575);
 }
 ```
-
 ### Time Complexity
-
 * Time: **O(v)**
 * Space: **O(v)**
-
-
 ---
 
 ## 8. Truth Table Generation
-
 ### Aim
-
 To generate all combinations of truth values for n variables.
-
 ### Algorithm
-
 ```cpp
 void truthTable(char arr[], int n, int k){
     if(k == n){
@@ -225,23 +165,15 @@ void truthTable(char arr[], int n, int k){
     truthTable(arr, n, k + 1);
 }
 ```
-
 ### Time Complexity
-
 * Time: **O(2^n)**
 * Space: **O(n)**
-
-
 ---
 
 ## 9. Linear Search (Time Analysis)
-
 ### Aim
-
 To search for an element in an array using linear search and analyze execution time.
-
 ### Algorithm
-
 ```cpp
 int linearSearch(int arr[], int n, int target){
     for(int i = 0; i < n; i++){
@@ -251,24 +183,42 @@ int linearSearch(int arr[], int n, int target){
     return -1;
 }
 ```
-
 ### Time Complexity
-
 * Best Case: **O(1)**
 * Average Case: **O(n)**
 * Worst Case: **O(n)**
 * Space: **O(1)**
-
-
 ---
-## 10. Binary Search
 
+## 10. Selection Sort
 ### Aim
-
-To efficiently search an element in a sorted array using divide-and-conquer.
-
+To sort array elements using Selection Sort.
 ### Algorithm
+```cpp
+void selectionSort(int a[], int n){
+    for(int i = 0; i < n - 1; i++){
+        int min = i;
 
+        for(int j = i + 1; j < n; j++){
+            if(a[j] < a[min])
+                min = j;
+        }
+
+        swap(a[i], a[min]);
+    }
+}
+```
+### Time Complexity
+* Best Case: **O(1)**
+* Average Case: **O(n)**
+* Worst Case: **O(n)**
+* Space: **O(1)**
+---
+
+## 11. Binary Search
+### Aim
+To efficiently search an element in a sorted array using divide-and-conquer.
+### Algorithm
 ```cpp
 int binarySearch(int a[], int low, int high, int key){
     while(low <= high){
@@ -285,19 +235,14 @@ int binarySearch(int a[], int low, int high, int key){
 }
 ```
 ### Time Complexity
-
 * Best Case: **O(1)**
 * Worst Case: **O(nlogn)**
-
 ---
-## 3. Insertion Sort
 
+## 12. Insertion Sort
 ### Aim
-
 To sort array elements using Insertion Sort.
-
 ### Algorithm
-
 ```cpp
 void insertionSort(int a[], int n){
     for(int i = 1; i < n; i++){
@@ -314,20 +259,14 @@ void insertionSort(int a[], int n){
 }
 ```
 ### Time Complexity
-
 * Best Case: **O(n)**
 * Worst Case: **O(n^2)**
-
 ---
 
-## 4. Merge Sort
-
+## 13. Merge Sort
 ### Aim
-
 To sort array elements using Merge Sort with divide-and-conquer.
-
 ### Algorithm
-
 ```cpp
 void mergeSort(int a[], int low, int high){
     if(low < high){
@@ -346,14 +285,10 @@ void mergeSort(int a[], int low, int high){
 * O(n)
  ---
 
- ## 5. Quick Sort
-
+ ## 14. Quick Sort
 ### Aim
-
 To sort array elements using Quick Sort with partition technique.
-
 ### Algorithm
-
 ```cpp
 void quickSort(int a[], int low, int high){
     if(low < high){
@@ -371,14 +306,10 @@ void quickSort(int a[], int low, int high){
 * O(1)
  ---
 
- ## 6. Kth Smallest Element 
-
+ ## 15. Kth Smallest Element 
 ### Aim
-
 To find the kth smallest element in an array using partition method of Quick Sort.
-
 ### Algorithm
-
 ```cpp
 int kthSmallestNumber(int arr[], int s, int e, int k){
     int p = partition(arr, s, e);
@@ -400,14 +331,10 @@ int kthSmallestNumber(int arr[], int s, int e, int k){
 * Worst Case: **O(n)**
 ---
 
-## 10. Fractional Knapsack
-
+## 16. Fractional Knapsack
 ### Aim
-
 To maximize profit by selecting full or fractional items based on profit/weight ratio.
-
 ### Algorithm
-
 ```cpp
 sort(items by profit/weight ratio descending);
 
@@ -426,14 +353,10 @@ for(i=0;i<n;i++){
 ### Space Complexity **O(1)**
 ---
 
-## 11. Activity Selection
-
+## 17. Activity Selection
 ### Aim
-
 To select maximum number of non-overlapping activities.
-
 ### Algorithm
-
 ```cpp
 sort(activities by finish time);
 
@@ -451,14 +374,10 @@ for(i=1;i<n;i++){
 ### Space Complexity **O(1)**
 ---
 
-## 12. Dijkstra Algorithm
-
+## 18. Dijkstra Algorithm
 ### Aim
-
 To find shortest path from source vertex to all vertices.
-
 ### Algorithm
-
 ```cpp
 dist[source] = 0;
 
@@ -476,17 +395,12 @@ for(count=0; count<V-1; count++){
 ```
 ### Time Complexity **O(V^2)**
 ### Space Complexity **O(V)**
-
 ---
 
-## 13. Kruskal Algorithm
-
+## 19. Kruskal Algorithm
 ### Aim
-
 To find Minimum Spanning Tree using greedy method.
-
 ### Algorithm
-
 ```cpp
 sort(edges by weight);
 
@@ -499,16 +413,12 @@ for each edge(u,v):
 ```
 ### Time Complexity **O(ElogE)**
 ### Space Complexity **O(V)**
-
 ---
-## 14. Prim's Algorithm
 
+## 20. Prim's Algorithm
 ### Aim
-
 To find Minimum Spanning Tree starting from any vertex.
-
 ### Algorithm
-
 ```cpp
 key[0] = 0;
 
@@ -527,14 +437,11 @@ for(count=0; count<V-1; count++){
 ```
 ### Time Complexity **O(V^2)**
 ### Space Complexity **O(V)**
-
 ---
-## 15. Multi Stage Graph using Dynamic Programming
 
+## 21. Multi Stage Graph using Dynamic Programming
 ### Aim
-
 To find the shortest path from source to destination in a multi-stage graph using Dynamic Programming.
-
 ### Algorithm
 
 ```cpp
@@ -556,14 +463,10 @@ for(i=n-1; i>=1; i--){
 ### Space Complexity **O(V)**
 ---
 
-## 16. Matrix Chain Multiplication using Dynamic Programming
-
+## 22. Matrix Chain Multiplication using Dynamic Programming
 ### Aim
-
 To find the minimum number of scalar multiplications required for matrix chain multiplication.
-
 ### Algorithm
-
 ```cpp
 for(i=1;i<=n;i++)
     dp[i][i]=0;
@@ -581,21 +484,15 @@ for(len=2; len<=n; len++){
         }
     }
 }
-
 ```
-
 ### Time Complexity **O(n^3)**
 ### Space Complexity **O(n^2)**
 ---
 
-## 17. Longest Common Subsequence (LCS) using Dynamic Programming
-
+## 23. Longest Common Subsequence (LCS) using Dynamic Programming
 ### Aim
-
 To find the length of the Longest Common Subsequence between two strings using Dynamic Programming.
-
 ### Algorithm
-
 ```cpp
 for(i=0;i<=m;i++)
     dp[i][0]=0;
@@ -618,14 +515,10 @@ for(i=1;i<=m;i++){
 * **O(m × n)**
 ---
 
-## 18. All Pairs Shortest Path using Floyd Warshall Algorithm
-
+## 24. All Pairs Shortest Path using Floyd Warshall Algorithm
 ### Aim
-
 To find the shortest paths between all pairs of vertices using Dynamic Programming.
-
 ### Algorithm
-
 ```cpp
 for(k=0;k<n;k++){
     for(i=0;i<n;i++){
@@ -641,18 +534,13 @@ for(k=0;k<n;k++){
 ### Time Complexity
 * **O(n^3)**
 ### Space Complexity
-* **O(n^2)**
-  
+* **O(n^2)**  
 ---
 
-## 19. Travelling Salesperson Problem (TSP) using Dynamic Programming
-
+## 25. Travelling Salesperson Problem (TSP)
 ### Aim
-
 To find the minimum travelling cost for visiting all cities exactly once and returning to the starting city using Dynamic Programming.
-
 ### Algorithm
-
 ```cpp
 int tsp(mask, pos){
 
@@ -679,7 +567,5 @@ int tsp(mask, pos){
 ### Space Complexity
 * **O(n × 2ⁿ)**
 ---
-
-
 
 ✨ *All programs are implemented in C++ and focus on understanding algorithmic efficiency.*
