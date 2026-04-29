@@ -21,7 +21,7 @@ plt.text(2000, 5000000000,
          fontsize=9)
 plt.xlabel("Input size (n)")
 plt.ylabel("Average time (log scale)")
-plt.title("Time Complexity Comparison")
+plt.title("Time Complexity Comparison for Linear Search")
 
 plt.legend()
 plt.grid(True, which="both")
